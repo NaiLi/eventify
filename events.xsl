@@ -33,7 +33,8 @@
 			<xsl:apply-templates/>
 			<form action="attend.php" method="POST">
 			<input type="hidden" name="id" value="{../eventID}"/>
-			<input type="submit" value="submit"/>
+			<input type="text" name="name"/>
+			<input type="submit" value="Jag vill me'!"/>
 			</form>
 		</h2>
 	</xsl:template>
