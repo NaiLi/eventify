@@ -1,0 +1,21 @@
+Lägg in detta i index.php och validera
+<!DOCTYPE events SYSTEM 'events.dtd'>
+<------->
+
+<!ENTITY Ouml ”Ö”>
+<!ENTITY ouml ”ö”>
+
+<ELEMENT events (event*)>
+<ELEMENT event (title, category?, min_attend?, max_attend?, date, description?, attendants?)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT category (#PCDATA)>
+<!ELEMENT min_attend (#PCDATA)>
+<!ELEMENT max_attend (#PCDATA)>
+<!ELEMENT date (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+
+<!ELEMENT attendants (user*)>
+<!ELEMENT user (firstname, lastname, description?)>
+
+<!ELEMENT firstname (#PCDATA)>
+<!ELEMENT lastname (#PCDATA)>

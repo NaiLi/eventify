@@ -27,4 +27,5 @@
 
 	$xml_text .= "</events>";
 	print utf8_encode($xml_text);
+	
 ?>
