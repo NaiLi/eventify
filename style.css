@@ -1,0 +1,36 @@
+/*Blågrå: #296984
+orange: #e26745*/
+
+body {
+	background-color: #e26745;
+	font-family: verdana;
+}
+
+h1 {
+	text-align: center;
+}
+
+button {
+	margin-left: 15px;
+	margin-right: 15px;
+	padding: 10px;
+
+}
+
+.event_list {
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+.one_event {
+	border: 5px solid #296984;
+	padding: 7px;
+	margin: 5px;
+}
+
+.spots {
+	background-color: #296984;
+	border-radius: 5px;
+	padding: 5px;
+	float: right;
+}
