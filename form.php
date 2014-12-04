@@ -1,5 +1,13 @@
 <?php 
 
+	$title = mysql_real_escape_string($_POST['title']);
+	$category = mysql_real_escape_string($_POST['category']);
+	$min_attend = mysql_real_escape_string(1);
+	$max_attend = mysql_real_escape_string(10);
+	$event_date = mysql_real_escape_string('2014-12-13');
+	$description = mysql_real_escape_string($_POST['description']);
+
+/*
 	header("Content-type:text/xml;charset=utf-8");
 	mysql_connect("localhost", "root", "")
 		or die("Could not connect");
@@ -27,7 +35,7 @@
 
 	$xml_text .= "</events>";
 	print utf8_encode($xml_text);
-
-	mysql_close();
+*/
 	
 ?>
+
