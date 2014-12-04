@@ -34,3 +34,31 @@ button {
 	padding: 5px;
 	float: right;
 }
+
+#addevent fieldset {
+	width: 400px;
+	padding: 20px 0px 20px 50px;
+	border: 2px solid #296984;
+}
+
+#addevent legend {
+	color: #296984;
+	letter-spacing: 5px;
+}
+
+#addevent label {
+	float: left;
+	text-align: right;
+	width: 210px;
+	padding-right: 5px;
+}
+
+.input_text {
+	float: left;
+	width: 150px;
+}
+
+.custom_button {
+	background-color: #296984;
+	border: 2px solid #000000;
+}

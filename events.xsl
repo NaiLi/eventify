@@ -14,6 +14,24 @@
 			</head>
 
 		  <body>
+		  	<form id="addevent" action="form.php" method="POST">
+		  	<fieldset>
+		  		<legend>Add event</legend>
+				<label>Title:</label><input type="text" name="title" class="input_text"/>
+				<br/><br/>
+				<label>Category:</label> <input type="text" name="category" class="input_text"/>
+				<br/><br/>
+				<label>Minimum attendings:</label> <input type="number" min="1" name="min_attend" class="input_text"/>
+				<br/><br/>
+				<label>Maximum attendings:</label> <input type="number" min="1" name="max_attend" class="input_text"/>
+				<br/><br/>
+				<label>Date:</label> <input type="date" name="event_date" class="input_text"/>
+				<br/><br/>
+				<label>Description:</label> <input type="text" name="description" class="input_text"/>
+				<br/><br/>
+				<input type="submit" value="Add event" name="submit" class="custom_button"/>
+			</fieldset>
+			</form>
 		  	<h1>Upcoming events</h1>
 		  	<div class="event_list">
 		  		<xsl:apply-templates/>
@@ -33,7 +51,7 @@
 			<xsl:apply-templates/>
 			<form action="attend.php" method="POST">
 			<input type="hidden" name="id" value="{../eventID}"/>
-			<input type="submit" value="submit"/>
+			<input type="submit" value="Attenda!" class="custom_button"/>
 			</form>
 		</h2>
 	</xsl:template>
