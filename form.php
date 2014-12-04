@@ -1,41 +1,50 @@
-<?php 
+<?php
 
-	$title = mysql_real_escape_string($_POST['title']);
-	$category = mysql_real_escape_string($_POST['category']);
-	$min_attend = mysql_real_escape_string(1);
-	$max_attend = mysql_real_escape_string(10);
-	$event_date = mysql_real_escape_string('2014-12-13');
-	$description = mysql_real_escape_string($_POST['description']);
-
-/*
-	header("Content-type:text/xml;charset=utf-8");
 	mysql_connect("localhost", "root", "")
 		or die("Could not connect");
-	mysql_select_db("eventify");    
 
-	$query = "SELECT * FROM event";
+	mysql_select_db("eventify");
 
-	$data = mysql_query($query);
-	if(!$data) { echo "No data found\n";}
+	$category_query = "SELECT * FROM category";
+	$categories = mysql_query($category_query);
+	
+	if(isset($_POST['submit'])) {
 
-	$xml_text = 
-	"<?xml version='1.0' encoding='UTF-8'?> 
-	<?xml-stylesheet type='text/xsl' href='events.xsl'?>
-	<events>";
+		$query = "INSERT INTO event (title, category, min_attend, max_attend, event_date, description)
+		VALUES ('$_POST[title]', '$_POST[category]', '$_POST[min_attend]', '$_POST[max_attend]', '$_POST[event_date]', '$_POST[description]')";
 
-	while($row = mysql_fetch_assoc($data)) {
-		$xml_text .= "<event>";
+		$result = mysql_query($query);
 
-  	foreach($row as $key => $value) {
-    	$xml_text .= "<$key>$value</$key>\r\n";
-  	}
+	    if ($result) {
+	    	echo "Your event has been added!";
+	    } else {
+	    	echo mysql_error();
+	    }
 
-  	$xml_text .= "</event>";
-	}
-
-	$xml_text .= "</events>";
-	print utf8_encode($xml_text);
-*/
+		mysql_close();
+	}	
 	
 ?>
 
+<form action="" method="POST">
+Title: <input type="text" name="title">
+<br><br>
+Category:
+<?php
+	echo "<select name=category>";
+	while($row = mysql_fetch_array($categories)) {
+		echo "<option value=$row[name]>$row[name]</option>";
+	}
+	echo "</select>";
+?>
+<br><br>
+Minimum attendings: <input type="number" min="1" name="min_attend">
+<br><br>
+Maximum attendings: <input type="number" min="1" name="max_attend">
+<br><br>
+Date: <input type="date" name="event_date">
+<br><br>
+Description: <input type="text" name="description">
+<br><br>
+<input type="submit" value="Add event" name="submit">
+</form>
