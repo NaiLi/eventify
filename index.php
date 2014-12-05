@@ -1,7 +1,7 @@
 <?php 
 
 	header("Content-type:text/xml;charset=utf-8");
-	mysql_connect("localhost", "root", "root")
+	mysql_connect("localhost", "root", "")
 		or die("Could not connect");
 	mysql_select_db("eventify");    
 
@@ -27,5 +27,7 @@
 
 	$xml_text .= "</events>";
 	print utf8_encode($xml_text);
+
+	mysql_close();
 	
 ?>
