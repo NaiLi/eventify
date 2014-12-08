@@ -1,4 +1,1 @@
-<?php include("eventlist.php");
-
-	include("form.php");
-?>
+<?php include("eventlist.php");?>

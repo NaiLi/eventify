@@ -2,9 +2,11 @@
 
 <events>
 
-<?php 
-//	header("Content-type:text/xml;charset=utf-8");
-	mysql_connect("localhost:8889", "root", "root")
+<?php
+
+	header("Content-type:text/xml;charset=utf-8");
+	//mysql_connect("localhost:8889", "root", "root")
+	mysql_connect("localhost", "root", "")
 		or die("Could not connect");
 	mysql_select_db("eventify")
 		or die("Could not connect to database");
@@ -15,6 +17,17 @@
 	if(!$data) { echo "No data found\n";}
 
 	$xml_text = "";
+
+	if(isset($_GET['login_status_message'])) {
+		if($_GET['login_status_message'] == "wrongCredentials") {
+			$xml_text .= "<login_status_message>wrongCredentials</login_status_message>";
+		}
+	}
+
+	if($_SESSION['loggedin']==true && $_SESSION['user']!="") {
+		$xml_text .= "<user>" . $_SESSION['user'] . "</user>";
+	}	
+
 	/*"<?xml version='1.0' encoding='UTF-8'?> 
 	<?xml-stylesheet type='text/xsl' href='events.xsl'?>
 	<events>";*/

@@ -36,5 +36,7 @@
   // Make the transformation and print the result
   $proc = new XSLTProcessor;
   $proc->importStyleSheet($xsl); // attach the xsl rules
+  $proc->setParameter('', 'session_name', session_name());
+  $proc->setParameter('', 'session_id', session_id());
   echo $proc->transformToXML($xml);
 ?>

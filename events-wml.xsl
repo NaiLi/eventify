@@ -12,7 +12,7 @@
 				<script type="text/javascript">
 					function showform(){
 						console.log("log");
-						document.getElementById("addevent").style.display = "inline";
+						document.getElementById("eventForm").style.display = "inline";
 						document.getElementById("showaddevent").style.display = "none";
 					}
 				</script>
@@ -23,7 +23,7 @@
 
 		  <body>
 		  	<h1>WML style sheet</h1>
-		  	<form id="addevent" action="form.php" method="POST" style="display:none">
+		  	<form id="eventForm" action="form.php" method="POST" style="display:none">
 		  	<fieldset>
 		  		<legend>Add event</legend>
 				<label>Title:</label><input type="text" name="title" class="input_text"/>
@@ -44,6 +44,37 @@
 			<button type="button" id="showaddevent" onclick="showform()">
 				Lägg till event
 			</button>
+
+			<xsl:if test="user">
+				<p>
+					Welcome, <xsl:value-of select="user"/>!<br/>
+					<form action="logout.php" method="POST">
+						<input type="submit" value="Logout"/>
+					</form>
+				</p>
+			</xsl:if>
+
+			<xsl:if test="not(user)">
+				<xsl:if test="login_status_message">
+					<br/>Error when logging in, try again!
+				</xsl:if>
+				<br/>Login...
+				<form method="post" action="loginCheck.php">
+					<input type="text" name= "usr" placeholder="Username"/>
+					<input type="password" name= "pwd" placeholder="Password"/>
+					<input type="submit" name="submit" value="Login"/>
+				</form>
+
+				... or sign up!
+
+				<form method="post" action="addUser.php">
+					<input type="text" name= "firstname" placeholder="First name"/>
+					<input type="text" name= "lastname" placeholder="Last name"/>
+					<input type="password" name= "pwd" placeholder="Password?"/>
+					<input type="submit" name="submit" value="Sign up"/>
+				</form>
+			</xsl:if>
+
 		  	<h1>Upcoming events</h1>
 		  	<div class="event_list">
 		  		<xsl:apply-templates/>
@@ -63,8 +94,12 @@
 			<xsl:apply-templates/>
 			<form action="attend.php" method="POST">
 			<input type="hidden" name="id" value="{../eventID}"/>
-			<input type="text" name="name"/>
-			<input type="submit" value="Jag vill me'!"/>
+			<xsl:if test="../../user">
+				<input type="submit" value="Jag heter {../../user} och vill va' me'!"/>
+			</xsl:if>
+			</form>
+			<form action="eventForm.php?action=update&amp;eventID={../eventID}" method="POST">
+			<input type="submit" value="Uppdatera event"/>
 			</form>
 		</h2>
 	</xsl:template>
@@ -96,6 +131,8 @@
 
 	<xsl:template match="eventID"/>
 	<xsl:template match="max_attend"/>
+	<xsl:template match="user"/>
+	<xsl:template match="login_status_message"/>
 </xsl:stylesheet>
 
 

@@ -16,24 +16,6 @@
 			</head>
 
 		  <body>
-		  	<!--<form id="addevent" action="addEvent.php" method="POST">
-		  	<fieldset>
-		  		<legend>Add event</legend>
-				<label>Title:</label><input type="text" id="eventTitle" name="title" class="input_text"/>
-				<br/><br/>
-				<label>Category:</label> <input type="text" name="category" class="input_text"/>
-				<br/><br/>
-				<label>Minimum attendings:</label> <input type="number" min="1" name="min_attend" class="input_text"/>
-				<br/><br/>
-				<label>Maximum attendings:</label> <input type="number" min="1" name="max_attend" class="input_text"/>
-				<br/><br/>
-				<label>Date:</label> <input type="date" name="event_date" class="input_text"/>
-				<br/><br/>
-				<label>Description:</label> <input type="text" name="description" class="input_text"/>
-				<br/><br/>
-				<input type="submit" value="Add event" name="submit" class="custom_button"/>
-			</fieldset>
-			</form>-->
 			<form action="eventForm.php?action=add" method="POST">
 			<input type="submit" value="Lägg till event"/>
 			</form>
