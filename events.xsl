@@ -14,10 +14,10 @@
 			</head>
 
 		  <body>
-		  	<form id="addevent" action="form.php" method="POST">
+		  	<!--<form id="addevent" action="addEvent.php" method="POST">
 		  	<fieldset>
 		  		<legend>Add event</legend>
-				<label>Title:</label><input type="text" name="title" class="input_text"/>
+				<label>Title:</label><input type="text" id="eventTitle" name="title" class="input_text"/>
 				<br/><br/>
 				<label>Category:</label> <input type="text" name="category" class="input_text"/>
 				<br/><br/>
@@ -31,6 +31,9 @@
 				<br/><br/>
 				<input type="submit" value="Add event" name="submit" class="custom_button"/>
 			</fieldset>
+			</form>-->
+			<form action="eventForm.php?action=add" method="POST">
+			<input type="submit" value="Lägg till event"/>
 			</form>
 		  	<h1>Upcoming events</h1>
 		  	<div class="event_list">
@@ -53,6 +56,9 @@
 			<input type="hidden" name="id" value="{../eventID}"/>
 			<input type="text" name="name"/>
 			<input type="submit" value="Jag vill me'!"/>
+			</form>
+			<form action="eventForm.php?action=update&amp;eventID={../eventID}" method="POST">
+			<input type="submit" value="Uppdatera event"/>
 			</form>
 		</h2>
 	</xsl:template>

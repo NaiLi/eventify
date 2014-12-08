@@ -35,18 +35,18 @@ button {
 	float: right;
 }
 
-#addevent fieldset {
+#eventForm fieldset {
 	width: 400px;
 	padding: 20px 0px 20px 50px;
 	border: 2px solid #296984;
 }
 
-#addevent legend {
+#eventForm legend {
 	color: #296984;
 	letter-spacing: 5px;
 }
 
-#addevent label {
+#eventForm label {
 	float: left;
 	text-align: right;
 	width: 210px;
