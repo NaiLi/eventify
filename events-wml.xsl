@@ -3,18 +3,27 @@
 <xsl:stylesheet version="1.0"
    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
    xmlns:php="http://php.net/xsl">
+ <xsl:output method="xml" doctype-public="-//WAPFORUM//DTD WML 1.1//EN" doctype-system="http://www.wapforum.org/DTD/wml_1.1.xml" indent="yes" media-type="text/vnd.wap.wml"/>
 
 	<xsl:template match="events">
 		<html>
 			<head>
+				<link rel="stylesheet" href="style.css"/>
+				<script type="text/javascript">
+					function showform(){
+						console.log("log");
+						document.getElementById("addevent").style.display = "inline";
+						document.getElementById("showaddevent").style.display = "none";
+					}
+				</script>
 				<title>
 					EVENTIFY
 				</title>
-				<link rel="stylesheet" href="style.css"/>
 			</head>
 
 		  <body>
-		  	<form id="addevent" action="form.php" method="POST">
+		  	<h1>WML style sheet</h1>
+		  	<form id="addevent" action="form.php" method="POST" style="display:none">
 		  	<fieldset>
 		  		<legend>Add event</legend>
 				<label>Title:</label><input type="text" name="title" class="input_text"/>
@@ -32,6 +41,9 @@
 				<input type="submit" value="Add event" name="submit" class="custom_button"/>
 			</fieldset>
 			</form>
+			<button type="button" id="showaddevent" onclick="showform()">
+				Lägg till event
+			</button>
 		  	<h1>Upcoming events</h1>
 		  	<div class="event_list">
 		  		<xsl:apply-templates/>
