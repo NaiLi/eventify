@@ -48,7 +48,8 @@
 
 			<xsl:if test="user">
 				<p>
-					Welcome, <xsl:value-of select="user"/>!<br/>
+					Welcome, <xsl:value-of select="user/username"/>!<br/>
+					<xsl:value-of select="user/attended"/><br/>
 					<form action="logout.php" method="POST">
 						<input type="submit" value="Logout"/>
 					</form>
