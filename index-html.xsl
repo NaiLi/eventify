@@ -86,26 +86,40 @@
 	</xsl:template>
 
 	<xsl:template match="event">
-			<div class="one_event">
-				<xsl:apply-templates/>
-			</div>
+		<div class="one_event">
+			<xsl:apply-templates/>
+
+			<xsl:if test="../user">
+				<xsl:choose>
+					<xsl:when test="loginattended &#61; 'true'">
+						<form action="attend.php" method="POST">
+							<input type="hidden" name="eventid" value="{eventID}"/>
+							<input type="hidden" name="userid" value="{../user/userid}"/>
+								<input type="submit" value="Jag heter {../user/username} och vill inte längre va' me'!"/>
+						</form>
+					</xsl:when>
+					<xsl:otherwise>
+						<form action="attend.php" method="POST">
+							<input type="hidden" name="eventid" value="{eventID}"/>
+							<input type="hidden" name="userid" value="{../user/userid}"/>
+								<input type="submit" value="Jag heter {../user/username} och vill va' me'!"/>
+						</form>						
+					</xsl:otherwise>	
+				</xsl:choose>	
+
+				<xsl:if test="creatorID &#61; ../user/userid">
+					<form action="eventForm.php?action=update&amp;eventID={eventID}" method="POST">
+						<input type="submit" value="Uppdatera event"/>
+					</form>
+				</xsl:if>
+
+			</xsl:if>
+		</div>
 	</xsl:template>
 
 	<xsl:template match="title">
 		<h2>
 			<xsl:apply-templates/>
-			<xsl:if test="../../user">
-				<form action="attend.php" method="POST">
-				<input type="hidden" name="eventid" value="{../eventID}"/>
-				<input type="hidden" name="userid" value="{../../user/userid}"/>
-					<input type="submit" value="Jag heter {../../user/username} och vill va' me'!"/>
-				</form>
-			</xsl:if>
-			<xsl:if test="../creatorID &#61; ../../user/userid">
-				<form action="eventForm.php?action=update&amp;eventID={../eventID}" method="POST">
-					<input type="submit" value="Uppdatera event"/>
-				</form>
-			</xsl:if>
 		</h2>
 	</xsl:template>
 
