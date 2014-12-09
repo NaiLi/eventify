@@ -1,15 +1,13 @@
-<?php include("prefix.php");?>
+<?php
+	include("prefix.php");
+	include("db_connect.php");
+?>
 
 <events>
 
 <?php
 
 	header("Content-type:text/xml;charset=utf-8");
-	//mysql_connect("localhost:8889", "root", "root")
-	mysql_connect("localhost", "root", "")
-		or die("Could not connect");
-	mysql_select_db("eventify")
-		or die("Could not connect to database");
 
 	$query = "SELECT * FROM event";
 
@@ -43,10 +41,11 @@
 
 	//$xml_text .= "</events>";
 	print utf8_encode($xml_text);
-
-	mysql_close();
 ?>
 
 </events>
 
-<?php include("postfix.php");?>
+<?php
+	include("db_disconnect.php");
+	include("postfix.php");
+?>

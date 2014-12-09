@@ -1,4 +1,6 @@
 <?php
+	
+	include "db_connect.php";
 
 	$action = $_GET['action'];
 
@@ -8,11 +10,6 @@
 	"<?xml version='1.0' encoding='UTF-8'?> 
 	<?xml-stylesheet type='text/xsl' href='eventForm.xsl'?>
 	<form>";
-
-	mysql_connect("localhost", "root", "")
-		or die("Could not connect");
-
-	mysql_select_db("eventify");
 
 	$xml_text .= "<action>" . $action . "</action>";
 
@@ -37,7 +34,5 @@
 
     $xml_text .= "</form>";
 	print utf8_encode($xml_text);
-
-	mysql_close();
 
 ?>

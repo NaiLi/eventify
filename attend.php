@@ -1,11 +1,9 @@
 <?php
 
+	include "db_connect.php";
+
 	$eventid = $_POST['id'];
 	$name = $_POST['name'];
-
-	mysql_connect("localhost", "root", "")
-		or die("Could not connect");
-	mysql_select_db("eventify");
 
 	//TODO: check if user already exists
 

@@ -1,9 +1,6 @@
 <?php
 
-	mysql_connect("localhost", "root", "")
-		or die("Could not connect");
-
-	mysql_select_db("eventify");
+	include "db_connect.php";
 
 	if($_GET['eventID']) {
 		$eventID = $_GET['eventID'];
@@ -18,8 +15,6 @@
     if (!mysql_query($query)) {
     	echo mysql_error();
     }
-
-	mysql_close();
 
 	header("Location: index.php");
 	die();	

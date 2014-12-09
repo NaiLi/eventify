@@ -1,14 +1,11 @@
 <?php
 
+	include "db_connect.php";
+
 	session_start();
 
 	$usr = $_POST['usr'];
 	$pwd = $_POST['pwd'];
-
-	mysql_connect("localhost", "root", "")
-		or die("Could not connect");
-
-	mysql_select_db("eventify");
 
 	$query = "SELECT * FROM user WHERE firstname = '$usr' AND pwd = '$pwd'";
 
