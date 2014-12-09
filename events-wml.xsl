@@ -23,7 +23,7 @@
 
 		  <body>
 		  	<h1>WML style sheet</h1>
-		  	<form id="eventForm" action="form.php" method="POST" style="display:none">
+		  	<form id="eventForm" action="handleEvent.php" method="POST" style="display:none">
 		  	<fieldset>
 		  		<legend>Add event</legend>
 				<label>Title:</label><input type="text" name="title" class="input_text"/>
