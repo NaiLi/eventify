@@ -49,7 +49,6 @@
 			<xsl:if test="user">
 				<p>
 					Welcome, <xsl:value-of select="user/username"/>!<br/>
-					<xsl:value-of select="user/attended"/><br/>
 					<form action="logout.php" method="POST">
 						<input type="submit" value="Logout"/>
 					</form>
@@ -152,4 +151,6 @@
 	<xsl:template match="max_attend"/>
 	<xsl:template match="user"/>
 	<xsl:template match="login_status_message"/>
+	<xsl:template match="loginattended"/>
+	<xsl:template match="creatorID"/>
 </xsl:stylesheet>
