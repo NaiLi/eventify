@@ -42,6 +42,7 @@
 	
 	while($row = mysql_fetch_assoc($data)) {
 		$xml_text .= "<event>";
+		$iamin = "false";
 
 	  	foreach($row as $key => $value) {
 	    	$xml_text .= "<$key>$value</$key>\r\n";
@@ -57,8 +58,6 @@
 				if($_SESSION['loggedin']==true && $_SESSION['user']!="") {
 					if($row['userID'] == $_SESSION['userid']) {
 						$iamin = "true";
-					} else {
-						$iamin = "false";
 					}
 				}
 			}

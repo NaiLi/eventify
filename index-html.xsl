@@ -92,7 +92,7 @@
 			<xsl:if test="../user">
 				<xsl:choose>
 					<xsl:when test="loginattended &#61; 'true'">
-						<form action="attend.php" method="POST">
+						<form action="unattend.php" method="POST">
 							<input type="hidden" name="eventid" value="{eventID}"/>
 							<input type="hidden" name="userid" value="{../user/userid}"/>
 								<input type="submit" value="Jag heter {../user/username} och vill inte längre va' me'!"/>
