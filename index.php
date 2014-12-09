@@ -31,23 +31,43 @@
 		if(mysql_num_rows($result) != 0) {
 			$xml_text .= "<attended>";
 			while($row = mysql_fetch_assoc($result)) {
-				$xml_text .= "<event>" . $row['eventID'] . "</event>";
+				$xml_text .= "<event><id>" . $row['eventID'] . "</id></event>";
 			}
 			$xml_text .= "</attended>";
 		}
 
 		$xml_text .= "</user>";
+		
 	}	
-
+	
 	while($row = mysql_fetch_assoc($data)) {
 		$xml_text .= "<event>";
 
-  	foreach($row as $key => $value) {
-    	$xml_text .= "<$key>$value</$key>\r\n";
-  	}
-  	$xml_text .= "</event>";
-  }
+	  	foreach($row as $key => $value) {
+	    	$xml_text .= "<$key>$value</$key>\r\n";
+	  	}
+		$event_query = "SELECT userID FROM attending WHERE eventID = '$row[eventID]'";
+		$result2 = mysql_query($event_query);
 
+		if(mysql_num_rows($result2) != 0) {
+			$xml_text .= "<attending>";
+			while($row = mysql_fetch_assoc($result2)) {
+				$xml_text .= "<user><id>" . $row['userID'] . "</id></user>";
+
+				if($_SESSION['loggedin']==true && $_SESSION['user']!="") {
+					if($row['userID'] == $_SESSION['userid']) {
+						$iamin = "true";
+					} else {
+						$iamin = "false";
+					}
+				}
+			}
+			$xml_text .= "</attending>";
+		}
+		$xml_text .= "<loginattended>$iamin</loginattended>";
+
+	  	$xml_text .= "</event>";
+  	}
 	print utf8_encode($xml_text);
 ?>
 
