@@ -22,29 +22,32 @@
 			</head>
 
 		  <body>
-		  	<h1>HTML style sheet</h1>
-		  	<form id="eventForm" action="handleEvent.php" method="POST" style="display:none">
-		  	<fieldset>
-		  		<legend>Add event</legend>
-				<label>Title:</label><input type="text" name="title" class="input_text"/>
-				<br/><br/>
-				<label>Category:</label> <input type="text" name="category" class="input_text"/>
-				<br/><br/>
-				<label>Minimum attendings:</label> <input type="number" min="1" name="min_attend" class="input_text"/>
-				<br/><br/>
-				<label>Maximum attendings:</label> <input type="number" min="1" name="max_attend" class="input_text"/>
-				<br/><br/>
-				<label>Date:</label> <input type="date" name="event_date" class="input_text"/>
-				<br/><br/>
-				<label>Description:</label> <input type="text" name="description" class="input_text"/>
-				<br/><br/>
-				<input type="hidden" name="userid" value="{user/userid}"/>
-				<input type="submit" value="Add event" name="submit" class="custom_button"/>
-			</fieldset>
-			</form>
-			<button type="button" id="showaddevent" onclick="showform()">
-				Lägg till event
-			</button>
+		  	<h1>HTML style sheet ÅÅÅ</h1>
+
+		  	<xsl:if test="user">
+			  	<form id="eventForm" action="handleEvent.php" method="POST" style="display:none">
+				  	<fieldset>
+					  		<legend>Add event</legend>
+							<label>Title:</label><input type="text" name="title" class="input_text"/>
+							<br/><br/>
+							<label>Category:</label> <input type="text" name="category" class="input_text"/>
+							<br/><br/>
+							<label>Minimum attendings:</label> <input type="number" min="1" name="min_attend" class="input_text"/>
+							<br/><br/>
+							<label>Maximum attendings:</label> <input type="number" min="1" name="max_attend" class="input_text"/>
+							<br/><br/>
+							<label>Date:</label> <input type="date" name="event_date" class="input_text"/>
+							<br/><br/>
+							<label>Description:</label> <input type="text" name="description" class="input_text"/>
+							<br/><br/>
+							<input type="hidden" name="userid" value="{user/userid}"/>
+							<input type="submit" value="Add event" name="submit" class="custom_button"/>
+						</fieldset>
+					</form>
+					<button type="button" id="showaddevent" onclick="showform()">
+						Lägg till event
+					</button>
+				</xsl:if>
 
 			<xsl:if test="user">
 				<p>
