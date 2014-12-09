@@ -35,4 +35,6 @@
     $xml_text .= "</form>";
 	print utf8_encode($xml_text);
 
+	include "db_disconnect.php";
+
 ?>

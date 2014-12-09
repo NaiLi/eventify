@@ -23,7 +23,7 @@
 	}
 
 	if($_SESSION['loggedin']==true && $_SESSION['user']!="") {
-		$xml_text .= "<user>" . $_SESSION['user'] . "</user>";
+		$xml_text .= "<user><username>" . $_SESSION['user'] . "</username><userid>" . $_SESSION['userid'] . "</userid></user>";
 	}	
 
 	while($row = mysql_fetch_assoc($data)) {

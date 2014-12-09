@@ -92,12 +92,13 @@
 	<xsl:template match="title">
 		<h2>
 			<xsl:apply-templates/>
-			<form action="attend.php" method="POST">
-			<input type="hidden" name="id" value="{../eventID}"/>
 			<xsl:if test="../../user">
-				<input type="submit" value="Jag heter {../../user} och vill va' me'!"/>
+				<form action="attend.php" method="POST">
+				<input type="hidden" name="eventid" value="{../eventID}"/>
+				<input type="hidden" name="userid" value="{../../user/userid}"/>
+					<input type="submit" value="Jag heter {../../user/username} och vill va' me'!"/>
+				</form>
 			</xsl:if>
-			</form>
 			<form action="eventForm.php?action=update&amp;eventID={../eventID}" method="POST">
 			<input type="submit" value="Uppdatera event"/>
 			</form>
