@@ -17,7 +17,7 @@
     {
       // if a mobile phone, use a wml stylesheet and set appropriate MIME type
       header("Content-type:text/vnd.wap.wml");
-      $xsl->load('events-wml.xsl');
+      $xsl->load('index-wml.xsl');
     } 
     /*
     elseif (ereg("X-Smiles", $UA))  
@@ -30,7 +30,7 @@
     {
       // if not a mobile phone, use a html stylesheet
       header("Content-type:text/html");
-      $xsl->load('events-wml.xsl');//'events-html.xsl');
+      $xsl->load('index-html.xsl');
     }
 
   // Make the transformation and print the result

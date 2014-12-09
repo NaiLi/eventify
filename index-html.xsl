@@ -9,6 +9,13 @@
 		<html>
 			<head>
 				<link rel="stylesheet" href="style.css"/>
+				<script type="text/javascript">
+					function showform(){
+						console.log("log");
+						document.getElementById("eventForm").style.display = "inline";
+						document.getElementById("showaddevent").style.display = "none";
+					}
+				</script>
 				<title>
 					EVENTIFY
 				</title>
@@ -16,7 +23,7 @@
 
 		  <body>
 		  	<h1>WML style sheet</h1>
-		  	<form id="eventForm" action="form.php" method="POST" style="display:none">
+		  	<form id="eventForm" action="handleEvent.php" method="POST" style="display:none">
 		  	<fieldset>
 		  		<legend>Add event</legend>
 				<label>Title:</label><input type="text" name="title" class="input_text"/>
@@ -31,6 +38,7 @@
 				<br/><br/>
 				<label>Description:</label> <input type="text" name="description" class="input_text"/>
 				<br/><br/>
+				<input type="hidden" name="userid" value="{user/userid}"/>
 				<input type="submit" value="Add event" name="submit" class="custom_button"/>
 			</fieldset>
 			</form>
@@ -85,15 +93,18 @@
 	<xsl:template match="title">
 		<h2>
 			<xsl:apply-templates/>
-			<form action="attend.php" method="POST">
-			<input type="hidden" name="id" value="{../eventID}"/>
 			<xsl:if test="../../user">
-				<input type="submit" value="Jag heter {../../user} och vill va' me'!"/>
+				<form action="attend.php" method="POST">
+				<input type="hidden" name="eventid" value="{../eventID}"/>
+				<input type="hidden" name="userid" value="{../../user/userid}"/>
+					<input type="submit" value="Jag heter {../../user/username} och vill va' me'!"/>
+				</form>
 			</xsl:if>
-			</form>
-			<form action="eventForm.php?action=update&amp;eventID={../eventID}" method="POST">
-			<input type="submit" value="Uppdatera event"/>
-			</form>
+			<xsl:if test="../creatorID &#61; ../../user/userid">
+				<form action="eventForm.php?action=update&amp;eventID={../eventID}" method="POST">
+					<input type="submit" value="Uppdatera event"/>
+				</form>
+			</xsl:if>
 		</h2>
 	</xsl:template>
 
