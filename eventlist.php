@@ -9,7 +9,7 @@
 
 	header("Content-type:text/xml;charset=utf-8");
 
-	$query = "SELECT * FROM event";
+	$query = "SELECT * FROM event WHERE event_date >= CURDATE() ORDER BY event_date ASC";
 
 	$data = mysql_query($query);
 	if(!$data) { echo "No data found\n";}
@@ -26,10 +26,6 @@
 		$xml_text .= "<user>" . $_SESSION['user'] . "</user>";
 	}	
 
-	/*"<?xml version='1.0' encoding='UTF-8'?> 
-	<?xml-stylesheet type='text/xsl' href='events.xsl'?>
-	<events>";*/
-
 	while($row = mysql_fetch_assoc($data)) {
 		$xml_text .= "<event>";
 
@@ -39,7 +35,6 @@
   	$xml_text .= "</event>";
   }
 
-	//$xml_text .= "</events>";
 	print utf8_encode($xml_text);
 ?>
 
