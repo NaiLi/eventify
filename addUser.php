@@ -15,7 +15,7 @@
 		echo mysql_error();
 	}
 
-	$query = "SELECT * FROM user WHERE firstname = '$usr' AND pwd = '$pwd'";
+	$query = "SELECT * FROM user WHERE firstname = '$firstname' AND pwd = '$pwd'";
 	$result = mysql_query($query);
 	$user = mysql_fetch_assoc($result);
 	

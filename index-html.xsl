@@ -22,7 +22,7 @@
 			</head>
 
 		  <body>
-		  	<h1>WML style sheet</h1>
+		  	<h1>HTML style sheet</h1>
 		  	<form id="eventForm" action="handleEvent.php" method="POST" style="display:none">
 		  	<fieldset>
 		  		<legend>Add event</legend>
