@@ -26,6 +26,7 @@
 	    echo "Error: " . mysql_error();
 	}
 
+	include "db_disconnect.php";
+
 	header("Location: index.php");
-	die();
 ?>

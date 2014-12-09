@@ -23,7 +23,7 @@
 	}
 
 	if($_SESSION['loggedin']==true && $_SESSION['user']!="") {
-		$xml_text .= "<user>" . $_SESSION['user'] . "</user>";
+		$xml_text .= "<user><username>" . $_SESSION['user'] . "</username><userid>" . $_SESSION['userid'] . "</userid></user>";
 	}	
 
 	/*"<?xml version='1.0' encoding='UTF-8'?> 
