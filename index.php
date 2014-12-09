@@ -7,7 +7,7 @@
 
 <?php
 
-	header("Content-type:text/xml;charset=utf-8");
+	//header("Content-type:text/xml;charset=utf-8");
 
 	$query = "SELECT * FROM event WHERE event_date >= CURDATE() ORDER BY event_date ASC";
 
@@ -67,7 +67,7 @@
 
 	  	$xml_text .= "</event>";
   	}
-	print utf8_encode($xml_text);
+	print ($xml_text);//utf8_encode($xml_text);
 ?>
 
 </events>
