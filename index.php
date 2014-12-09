@@ -23,7 +23,19 @@
 	}
 
 	if($_SESSION['loggedin']==true && $_SESSION['user']!="") {
-		$xml_text .= "<user><username>" . $_SESSION['user'] . "</username><userid>" . $_SESSION['userid'] . "</userid></user>";
+		$user_query = "SELECT eventID FROM attending WHERE userID = '$_SESSION[userid]'";
+
+		$xml_text .= "<user><username>" . $_SESSION['user'] . "</username><userid>" . $_SESSION['userid'] . "</userid>";
+		echo "here";
+		
+		$xml_text .= "<attended>";
+
+		while($row = mysql_fetch_assoc(mysql_query($user_query))) {
+			$xml_text .= "<event>" . $row['eventID'] . "</event>";
+		}
+
+		$xml_text .= "</attended>";
+		$xml_text .= "</user>";
 	}	
 
 	while($row = mysql_fetch_assoc($data)) {

@@ -138,12 +138,3 @@
 	<xsl:template match="user"/>
 	<xsl:template match="login_status_message"/>
 </xsl:stylesheet>
-
-
-
-
-
-
-
-
-
