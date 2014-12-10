@@ -10,9 +10,13 @@
 				<link rel="stylesheet" href="style_desktop.css"/>
 				<script type="text/javascript">
 					function showform(){
-						console.log("log");
-						document.getElementById("eventForm").style.display = "inline";
-						document.getElementById("showaddevent").style.display = "none";
+						if(document.getElementById("eventForm").style.display != "inline") {
+							document.getElementById("eventForm").style.display = "inline";
+							document.getElementById("showaddevent").innerHTML = "Dölj ↑";
+						} else {
+							document.getElementById("eventForm").style.display = "none";
+							document.getElementById("showaddevent").innerHTML = "Lägg till nytt event ↓";
+						}						
 					}
 				</script>
 				<title>
@@ -21,7 +25,6 @@
 			</head>
 
 		  <body>
-
 		  	<div id="header">
 		  		<h1>Eventify</h1>
 		  		<xsl:if test="user">
@@ -201,4 +204,5 @@
 	<xsl:template match="loginattended"/>
 	<xsl:template match="creatorID"/>
 	<xsl:template match="min_attend"/>
+	<xsl:template match="categories"/>
 </xsl:stylesheet>
