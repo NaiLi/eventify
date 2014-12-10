@@ -1,9 +1,8 @@
 <?xml version="1.0"?>
 
-<xsl:stylesheet version="1.0"
-   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-   xmlns:php="http://php.net/xsl">
-  <xsl:output method="xml" doctype-public="-//WAPFORUM//DTD WML 1.1//EN" doctype-system="http://www.wapforum.org/DTD/wml_1.1.xml" indent="yes" media-type="text/vnd.wap.wml"/>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                version="1.0">
+	<xsl:output indent="yes" method="xml"/>
 
 	<xsl:template match="events">
 		<html>
@@ -159,12 +158,3 @@
 	<xsl:template match="loginattended"/>
 	<xsl:template match="creatorID"/>
 </xsl:stylesheet>
-
-
-
-
-
-
-
-
-
