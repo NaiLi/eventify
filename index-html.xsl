@@ -22,11 +22,13 @@
 			</head>
 
 		  <body>
-		  	<h1>HTML style sheet ÅÅÅ</h1>
+		  	<h1>HTML style sheet</h1>
 
-		  	<xsl:if test="user">
-			  	<form id="eventForm" action="handleEvent.php" method="POST" style="display:none">
-				  	<fieldset>
+		  	<xsl:choose>
+		  		<!-- User is logged in -->
+		  		<xsl:when test="user">
+				  	<form id="eventForm" action="addOrUpdateEvent.php" method="POST" style="display:none">
+					  	<fieldset>
 					  		<legend>Add event</legend>
 							<label>Title:</label><input type="text" name="title" class="input_text"/>
 							<br/><br/>
@@ -47,37 +49,37 @@
 					<button type="button" id="showaddevent" onclick="showform()">
 						Lägg till event
 					</button>
-				</xsl:if>
 
-			<xsl:if test="user">
-				<p>
-					Welcome, <xsl:value-of select="user/username"/>!<br/>
-					<form action="logout.php" method="POST">
-						<input type="submit" value="Logout"/>
+					<p>
+						Welcome, <xsl:value-of select="user/username"/>!<br/>
+						<form action="logout.php" method="POST">
+							<input type="submit" value="Logout"/>
+						</form>
+					</p>
+				</xsl:when>
+
+				<!-- User is NOT logged in -->
+				<xsl:otherwise>
+					<xsl:if test="login_status_message">
+						<br/>Error when logging in, try again!
+					</xsl:if>
+					<br/>Login...
+					<form method="post" action="loginCheck.php">
+						<input type="text" name= "usr" placeholder="Username"/>
+						<input type="password" name= "pwd" placeholder="Password"/>
+						<input type="submit" name="submit" value="Login"/>
 					</form>
-				</p>
-			</xsl:if>
 
-			<xsl:if test="not(user)">
-				<xsl:if test="login_status_message">
-					<br/>Error when logging in, try again!
-				</xsl:if>
-				<br/>Login...
-				<form method="post" action="loginCheck.php">
-					<input type="text" name= "usr" placeholder="Username"/>
-					<input type="password" name= "pwd" placeholder="Password"/>
-					<input type="submit" name="submit" value="Login"/>
-				</form>
+					... or sign up!
 
-				... or sign up!
-
-				<form method="post" action="addUser.php">
-					<input type="text" name= "firstname" placeholder="First name"/>
-					<input type="text" name= "lastname" placeholder="Last name"/>
-					<input type="password" name= "pwd" placeholder="Password?"/>
-					<input type="submit" name="submit" value="Sign up"/>
-				</form>
-			</xsl:if>
+					<form method="post" action="addUser.php">
+						<input type="text" name= "firstname" placeholder="First name"/>
+						<input type="text" name= "lastname" placeholder="Last name"/>
+						<input type="password" name= "pwd" placeholder="Password?"/>
+						<input type="submit" name="submit" value="Sign up"/>
+					</form>
+				</xsl:otherwise>
+		  	</xsl:choose>
 
 		  	<h1>Upcoming events</h1>
 		  	<div class="event_list">

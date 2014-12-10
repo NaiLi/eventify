@@ -17,7 +17,7 @@
 
 			<!-- Form for updating event -->
 			<xsl:if test="action &#61; 'update'">
-		   		<form id="eventForm" action="handleEvent.php?eventID={event/eventID}" method="POST">
+		   		<form id="eventForm" action="addOrUpdateEvent.php?eventID={event/eventID}" method="POST">
 				  	<fieldset>
 				  		<legend>Update event</legend>
 						<label>Title:</label><input type="text" id="eventTitle" name="title" class="input_text" value="{event/title}"/>
@@ -39,7 +39,7 @@
 
 			<!-- Form for adding event -->
 			<xsl:if test="action &#61; 'add'">
-		   		<form id="eventForm" action="handleEvent.php" method="POST">
+		   		<form id="eventForm" action="addOrUpdateEvent.php" method="POST">
 				  	<fieldset>
 				  		<legend>Add event</legend>
 						<label>Title:</label><input type="text" id="eventTitle" name="title" class="input_text"/>
