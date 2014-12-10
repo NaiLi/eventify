@@ -29,7 +29,7 @@
 		  		<h1>Eventify</h1>
 		  		<xsl:if test="user">
 						<form id="logout" action="logout.php" method="POST">
-							<input type="submit" value="Logout"/>
+							<input type="submit" value="Logga ut"/>
 							</form>
 					</xsl:if>
 		  	</div>
@@ -60,7 +60,7 @@
 
 					<div id="listtitle">
 						<div class="left">
-					  		<h1>Upcoming events</h1>
+					  		<h1>Kommande event</h1>
 						</div>
 					</div>
 
@@ -71,20 +71,26 @@
 						  	<form class="eventForm" action="addOrUpdateEvent.php" method="POST">
 							  	<fieldset>
 							  		<legend>Nytt event</legend>
-										<label>Title:</label><input type="text" name="title" class="input_text"/>
+										<label>Titel:</label><input type="text" name="title" class="input_text"/>
 										<br/><br/>
-										<label>Category:</label> <input type="text" name="category" class="input_text"/>
+										<label>Kategori:</label>
+										<select name="chosen_category">
+											<xsl:for-each select="categories/categoryname">
+												<option value="{.}"><xsl:value-of select="."/></option>
+											</xsl:for-each>
+										</select>
 										<br/><br/>
-										<label>Minimum attendings:</label> <input type="number" min="1" name="min_attend" class="input_text"/>
+										<label>Minantal:</label> <input type="number" min="1" name="min_attend" class="input_text"/>
 										<br/><br/>
-										<label>Maximum attendings:</label> <input type="number" min="1" name="max_attend" class="input_text"/>
+										<label>Maxantal:</label> <input type="number" min="1" name="max_attend" class="input_text"/>
 										<br/><br/>
-										<label>Date:</label> <input type="date" name="event_date" class="input_text"/>
+										<label>Datum:</label> <input type="date" name="event_date" class="input_text"/>
 										<br/><br/>
-										<label>Description:</label> <input type="text" name="description" class="input_text"/>
+										<label>Beskrivning:</label> 
+										<textarea name="description" rows="5">...</textarea>
 										<br/><br/>
 										<input type="hidden" name="userid" value="{user/userid}"/>
-										<input type="submit" value="Add event" name="submit" class="custom_button"/>
+										<input type="submit" value="Lägg till" name="submit" class="custom_button" style="float:right; margin-right:20%;"/>
 									</fieldset>
 								</form>
 							</xsl:when>
@@ -96,25 +102,25 @@
 								</xsl:if>
 
 								<div id="loginForm">
-									<br/>Login...
+									<br/>Logga in...
 									<br/><br/>
 									<form method="post" action="loginCheck.php">
 										<input type="text" name= "usr" placeholder="Username"/>
 										<br/><br/>
 										<input type="password" name= "pwd" placeholder="Password"/>
-										<input type="submit" name="submit" value="Login"/>
+										<input type="submit" name="submit" value="Logga in" class="custom_button"/>
 									</form>
 									<br/><br/>
 
-									... or sign up!
+									... eller kom in i värmen!
 								<br/><br/>
 									<form method="post" action="addUser.php">
-										<input type="text" name= "firstname" placeholder="First name"/>
+										<input type="text" name= "firstname" placeholder="Förnamn"/>
 										<br/><br/>
-										<input type="text" name= "lastname" placeholder="Last name"/>
+										<input type="text" name= "lastname" placeholder="Efternamn"/>
 										<br/><br/>
-										<input type="password" name= "pwd" placeholder="Password?"/>
-										<input type="submit" name="submit" value="Sign up"/>
+										<input type="password" name= "pwd" placeholder="Lösenord?"/>
+										<input type="submit" name="submit" value="Bli medlem" class="custom_button"/>
 									</form>
 								</div>
 							</xsl:otherwise>
@@ -174,7 +180,7 @@
 
 	<xsl:template match="category">
 		<p>
-			<xsl:apply-templates/>
+			Kategori: <xsl:apply-templates/>
 		</p>
 	</xsl:template>
 
@@ -187,7 +193,7 @@
 
 		<xsl:template match="date">
 		<p>
-			<xsl:apply-templates/>
+			Datum: <xsl:apply-templates/>
 		</p>
 	</xsl:template>
 

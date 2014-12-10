@@ -53,7 +53,7 @@
 							<br/>
 							<select name="chosen_category">
 								<xsl:for-each select="categories/categoryname">
-									<option value="."><xsl:value-of select="."/></option>
+									<option value="{.}"><xsl:value-of select="."/></option>
 								</xsl:for-each>
 							</select>
 							<br/>
