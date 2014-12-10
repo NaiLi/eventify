@@ -1,0 +1,138 @@
+
+/*Blågrå: #296984
+orange: #e26745*/
+
+body {
+	background-color: #e26745;
+	font-family: verdana;
+	margin: 0px;
+}
+
+h1 {
+	text-align: center;
+}
+
+button {
+	margin-left: 15px;
+	margin-right: 15px;
+	padding: 10px;
+
+}
+
+#header {
+	background-color: #296984;
+	vertical-align: top;
+	margin: 0px;
+	padding: 1%;
+	color: #fff;
+}
+
+#logout {
+	vertical-align: center;
+	margin-bottom: 10px;
+	text-align: right;
+}
+
+#start {
+	color: #fff;
+	text-align: center;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 2%;
+	margin-bottom: 0%;
+}
+
+#container {
+	padding-left: 10%;
+	padding-right: 10%;	
+}
+
+.left {
+	float: left;
+	width: 50%;
+}
+
+.right {
+	float: right;
+	width: 50%;
+}
+
+#listtitle {
+	width: 100%;
+	height: 13%;
+}
+
+#listtitle h1 {
+	color: #fff;
+	letter-spacing: 3px;
+}
+
+#loginForm {
+	border: 2.5px solid #296984;
+	padding-left: 5%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	margin-right: 30%;
+	line-height: 120%;
+}
+
+.one_event {
+  border-style: solid;
+  border-top: thick double #296984;
+  border-bottom: none;
+  border-right: none;
+  border-left: none;
+	padding: 7px;
+	margin: 5px;
+}
+
+.spots {
+	font-size: 10;
+	border: 2px solid #296984;
+	border-radius: 5px;
+	padding: 5px;
+	float: right;
+}
+
+#eventList {
+	color: #fff;
+	letter-spacing: 5px;
+	padding-right: 5%;
+}
+
+.eventForm fieldset {
+	width: 400px;
+	padding: 20px 0px 20px 50px;
+	border: 2px solid #296984;
+}
+
+.eventForm legend {
+	color: #296984;
+	letter-spacing: 5px;
+}
+
+.eventForm label {
+	float: left;
+	text-align: right;
+	width: 210px;
+	padding-right: 5px;
+}
+
+.input_text {
+	float: left;
+	width: 150px;
+}
+
+.custom_button {
+	color: #fff;
+	background-color: #296984;
+	padding: 1% 5% 1% 5%;
+	border: 1px solid #fff;
+	border-radius: 5px;
+	letter-spacing: 2px;
+}
+
+
+
+
+
