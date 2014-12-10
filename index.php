@@ -47,18 +47,25 @@
 
 			$xml_text .= "</user>";	
 		}
-	}		
-	
+	}
+
+
 	while($row = mysql_fetch_assoc($data)) {
+		$max_attend = 0;
+
 		$xml_text .= "<event>";
 		$iamin = "false";
 
 	  	foreach($row as $key => $value) {
 	    	$xml_text .= "<$key>$value</$key>\r\n";
+	    	if($key == "max_attend") {
+				$max_attend = $value;
+	    	}
 	  	}
 		$event_query = "SELECT userID FROM attending WHERE eventID = '$row[eventID]'";
 		$result2 = mysql_query($event_query);
 
+		$spotstaken = mysql_num_rows($result2);
 		if(mysql_num_rows($result2) != 0) {
 			$xml_text .= "<attending>";
 			while($row = mysql_fetch_assoc($result2)) {
@@ -74,6 +81,8 @@
 			}
 			$xml_text .= "</attending>";
 		}
+		$spotsleft = $max_attend - $spotstaken;
+		$xml_text .= "<spotsleft>$spotsleft</spotsleft>";
 		$xml_text .= "<loginattended>$iamin</loginattended>";
 
 	  	$xml_text .= "</event>";
