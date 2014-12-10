@@ -7,8 +7,6 @@
 
 <?php
 
-	header("Content-type:text/xml;charset=utf-8");
-
 	$query = "SELECT * FROM event WHERE event_date >= CURDATE() ORDER BY event_date ASC";
 
 	$data = mysql_query($query);

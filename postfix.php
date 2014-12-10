@@ -13,7 +13,7 @@
 
   // See which user agent is connecting
   $UA = getenv('HTTP_USER_AGENT');
-  if (ereg("Symbian", $UA) | ereg("Opera", $UA) | ereg("Motorola", $UA) | ereg("Nokia", $UA) | ereg("Siemens", $UA) | ereg("Samsung", $UA) | ereg("Ericsson", $UA) | ereg("LG", $UA) | ereg("NEC", $UA) |ereg("SEC", $UA) |ereg("MIDP", $UA) | ereg("Windows CE", $UA)) 
+  if (ereg("iPhone", $UA) | ereg("Android", $UA) | ereg("Symbian", $UA) | ereg("Opera", $UA) | ereg("Motorola", $UA) | ereg("Nokia", $UA) | ereg("Siemens", $UA) | ereg("Samsung", $UA) | ereg("Ericsson", $UA) | ereg("LG", $UA) | ereg("NEC", $UA) |ereg("SEC", $UA) |ereg("MIDP", $UA) | ereg("Windows CE", $UA)) 
     {
       // if a mobile phone, use a wml stylesheet and set appropriate MIME type
       header("Content-type:text/vnd.wap.wml");
@@ -29,7 +29,7 @@
   else 
     {
       // if not a mobile phone, use a html stylesheet
-      header("Content-type:text/html");
+      header("Content-type:text/html;charset=utf-8");
       $xsl->load('index-html.xsl');
     }
 
