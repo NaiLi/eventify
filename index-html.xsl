@@ -10,9 +10,13 @@
 				<link rel="stylesheet" href="style.css"/>
 				<script type="text/javascript">
 					function showform(){
-						console.log("log");
-						document.getElementById("eventForm").style.display = "inline";
-						document.getElementById("showaddevent").style.display = "none";
+						if(document.getElementById("eventForm").style.display != "inline") {
+							document.getElementById("eventForm").style.display = "inline";
+							document.getElementById("showaddevent").innerHTML = "Dölj ↑";
+						} else {
+							document.getElementById("eventForm").style.display = "none";
+							document.getElementById("showaddevent").innerHTML = "Lägg till nytt event ↓";
+						}						
 					}
 				</script>
 				<title>
@@ -26,12 +30,21 @@
 		  	<xsl:choose>
 		  		<!-- User is logged in -->
 		  		<xsl:when test="user">
+					<button type="button" id="showaddevent" onclick="showform()">
+						Lägg till nytt event ↓
+					</button>
+
 				  	<form id="eventForm" action="addOrUpdateEvent.php" method="POST" style="display:none">
 					  	<fieldset>
 					  		<legend>Add event</legend>
 							<label>Title:</label><input type="text" name="title" class="input_text"/>
 							<br/><br/>
-							<label>Category:</label> <input type="text" name="category" class="input_text"/>
+							<label>Category:</label>
+							<select name="chosen_category">
+								<xsl:for-each select="categories/categoryname">
+									<option value="."><xsl:value-of select="."/></option>
+								</xsl:for-each>
+							</select>
 							<br/><br/>
 							<label>Minimum attendings:</label> <input type="number" min="1" name="min_attend" class="input_text"/>
 							<br/><br/>
@@ -45,9 +58,6 @@
 							<input type="submit" value="Add event" name="submit" class="custom_button"/>
 						</fieldset>
 					</form>
-					<button type="button" id="showaddevent" onclick="showform()">
-						Lägg till event
-					</button>
 
 					<p>
 						Welcome, <xsl:value-of select="user/username"/>!<br/>
@@ -157,4 +167,5 @@
 	<xsl:template match="login_status_message"/>
 	<xsl:template match="loginattended"/>
 	<xsl:template match="creatorID"/>
+	<xsl:template match="categories"/>
 </xsl:stylesheet>

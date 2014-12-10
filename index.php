@@ -7,12 +7,22 @@
 
 <?php
 
+	$xml_text = "";
+
 	$query = "SELECT * FROM event WHERE event_date >= CURDATE() ORDER BY event_date ASC";
 
 	$data = mysql_query($query);
 	if(!$data) { echo "No data found\n";}
 
-	$xml_text = "";
+	$query = "SELECT * FROM category";
+
+	$categories = mysql_query($query);
+
+	$xml_text .= "<categories>";
+		while($row = mysql_fetch_assoc($categories)) {
+			$xml_text .= "<categoryname>$row[name]</categoryname>";
+		}
+	$xml_text .= "</categories>";
 
 	if(isset($_GET['login_status_message'])) {
 		if($_GET['login_status_message'] == "wrongCredentials") {
