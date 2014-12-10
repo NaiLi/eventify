@@ -180,20 +180,6 @@
 	<xsl:template match="user"/>
 	<xsl:template match="login_status_message"/>
 	<xsl:template match="loginattended"/>
-<<<<<<< HEAD:index-wml.xsl
 	<xsl:template match="creatorID"/>	
 	<xsl:template match="categories"/>
 </xsl:stylesheet>
-
-
-
-
-
-
-
-
-
-=======
-	<xsl:template match="creatorID"/>
-</xsl:stylesheet>
->>>>>>> 4272713afdb09ecb6e871f8cdaa4151249882a3a:index-mobile.xsl
