@@ -22,23 +22,24 @@
 		}
 	}
 
-	if($_SESSION['loggedin']==true && $_SESSION['user']!="") {
-		$user_query = "SELECT eventID FROM attending WHERE userID = '$_SESSION[userid]'";
-		$result = mysql_query($user_query);
+	if(isset($_SESSION['loggedin'])) {
+		if($_SESSION['loggedin']==true && $_SESSION['user']!="") {
+			$user_query = "SELECT eventID FROM attending WHERE userID = '$_SESSION[userid]'";
+			$result = mysql_query($user_query);
 
-		$xml_text .= "<user><username>" . $_SESSION['user'] . "</username><userid>" . $_SESSION['userid'] . "</userid>";
+			$xml_text .= "<user><username>" . $_SESSION['user'] . "</username><userid>" . $_SESSION['userid'] . "</userid>";
 
-		if(mysql_num_rows($result) != 0) {
-			$xml_text .= "<attended>";
-			while($row = mysql_fetch_assoc($result)) {
-				$xml_text .= "<event><id>" . $row['eventID'] . "</id></event>";
+			if(mysql_num_rows($result) != 0) {
+				$xml_text .= "<attended>";
+				while($row = mysql_fetch_assoc($result)) {
+					$xml_text .= "<event><id>" . $row['eventID'] . "</id></event>";
+				}
+				$xml_text .= "</attended>";
 			}
-			$xml_text .= "</attended>";
-		}
 
-		$xml_text .= "</user>";
-		
-	}	
+			$xml_text .= "</user>";	
+		}
+	}		
 	
 	while($row = mysql_fetch_assoc($data)) {
 		$xml_text .= "<event>";
@@ -55,11 +56,13 @@
 			while($row = mysql_fetch_assoc($result2)) {
 				$xml_text .= "<user><id>" . $row['userID'] . "</id></user>";
 
-				if($_SESSION['loggedin']==true && $_SESSION['user']!="") {
-					if($row['userID'] == $_SESSION['userid']) {
-						$iamin = "true";
+				if(isset($_SESSION['loggedin'])) {
+					if($_SESSION['loggedin']==true && $_SESSION['user']!="") {
+						if($row['userID'] == $_SESSION['userid']) {
+							$iamin = "true";
+						}
 					}
-				}
+				}				
 			}
 			$xml_text .= "</attending>";
 		}
