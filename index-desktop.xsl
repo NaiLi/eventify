@@ -26,7 +26,7 @@
 
 		  <body>
 		  	<div id="header">
-		  		<h1>Eventify</h1>
+		  		<img src="bjarnebla.png" alt="Mountain View" style="height:150px; padding-left:10%;"/>
 		  		<xsl:if test="user">
 						<form id="logout" action="logout.php" method="POST">
 							<input type="submit" value="Logga ut"/>
@@ -157,7 +157,7 @@
 						<form action="attend.php" method="POST">
 							<input type="hidden" name="eventid" value="{eventID}"/>
 							<input type="hidden" name="userid" value="{../user/userid}"/>
-								<input type="submit" value="Jag kan inte längre :(!" class="custom_button"/>
+								<input type="submit" value="Jag kan inte längre :(" class="custom_button"/>
 						</form>						
 					</xsl:otherwise>	
 				</xsl:choose>	
