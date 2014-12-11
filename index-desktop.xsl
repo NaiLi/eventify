@@ -28,10 +28,10 @@
 		  	<div id="header">
 		  		<h1>Eventify</h1>
 		  		<xsl:if test="user">
-						<form id="logout" action="logout.php" method="POST">
-							<input type="submit" value="Logga ut"/>
-							</form>
-					</xsl:if>
+					<form id="logout" action="logout.php" method="POST">
+						<input type="submit" value="Logga ut"/>
+					</form>
+				</xsl:if>
 		  	</div>
 
 		  	<div id="container">
@@ -41,7 +41,13 @@
 		  			<xsl:choose>
 			  		<xsl:when test="user">
 							<p>
-								Tjena, <xsl:value-of select="user/username"/>!<br/>
+								Tjena, <xsl:value-of select="user/username"/>
+
+								<xsl:if test="user/authority &#61; '1'">
+									(ADMIN)
+								</xsl:if>
+
+								!<br/>
 								Kul att se dig igen, hoppas du hittar några kul event som passar dig!
 							</p>
 						</xsl:when>
@@ -80,9 +86,9 @@
 											</xsl:for-each>
 										</select>
 										<br/><br/>
-										<label>Minantal:</label> <input type="number" min="1" name="min_attend" class="input_text"/>
+										<label>Min antal:</label> <input type="number" min="1" name="min_attend" class="input_text"/>
 										<br/><br/>
-										<label>Maxantal:</label> <input type="number" min="1" name="max_attend" class="input_text"/>
+										<label>Max antal:</label> <input type="number" min="1" name="max_attend" class="input_text"/>
 										<br/><br/>
 										<label>Datum:</label> <input type="date" name="event_date" class="input_text"/>
 										<br/><br/>
@@ -150,23 +156,29 @@
 						<form action="unattend.php" method="POST">
 							<input type="hidden" name="eventid" value="{eventID}"/>
 							<input type="hidden" name="userid" value="{../user/userid}"/>
-								<input type="submit" value="Jag vill va' me'!" class="custom_button"/>
+								<input type="submit" value="Jag kan inte längre :(!" class="custom_button"/>
 						</form>
 					</xsl:when>
 					<xsl:otherwise>
 						<form action="attend.php" method="POST">
 							<input type="hidden" name="eventid" value="{eventID}"/>
 							<input type="hidden" name="userid" value="{../user/userid}"/>
-								<input type="submit" value="Jag kan inte längre :(!" class="custom_button"/>
+								<input type="submit" value="Jag vill va' me'!" class="custom_button"/>
 						</form>						
 					</xsl:otherwise>	
 				</xsl:choose>	
 
-				<xsl:if test="creatorID &#61; ../user/userid">
+				<xsl:if test="creatorID &#61; ../user/userid or ../user/authority &#61; '1'">
 					<form action="eventForm.php?action=update&amp;eventID={eventID}" method="POST">
 						<input type="submit" value="Uppdatera event" class="custom_button"/>
 					</form>
 				</xsl:if>
+
+				<!--<xsl:if test="../user/authority &#61; '1'">
+					<form action="eventForm.php?action=update&amp;eventID={eventID}" method="POST">
+						<input type="submit" value="Uppdatera event" class="custom_button"/>
+					</form>
+				</xsl:if>-->
 
 			</xsl:if>
 		</div>

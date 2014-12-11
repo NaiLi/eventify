@@ -8,8 +8,8 @@
 	$lastname = $_POST['lastname'];
 	$pwd = $_POST['pwd'];
 
-	$query = "INSERT INTO user (firstname,lastname,pwd)
-	VALUES ('$firstname','$lastname','$pwd')";
+	$query = "INSERT INTO user (firstname,lastname,pwd, authority)
+	VALUES ('$firstname','$lastname','$pwd',0)";
 
 	if(!mysql_query($query)) {
 		echo mysql_error();
@@ -22,6 +22,7 @@
 	$_SESSION['loggedin'] = true;
 	$_SESSION['user'] = $user['firstname'];
 	$_SESSION['userid'] = $user['userID'];
+	$_SESSION['authority'] = $user['authority'];
 
 	include "db_disconnect.php";
 
