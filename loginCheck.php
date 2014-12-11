@@ -17,6 +17,7 @@
 		$_SESSION['loggedin'] = true;
 		$_SESSION['user'] = $user['firstname'];
 		$_SESSION['userid'] = $user['userID'];
+		$_SESSION['authority'] = $user['authority'];
 		include "db_disconnect.php";
 		header("Location: index.php");
 	} else {

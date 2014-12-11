@@ -35,7 +35,7 @@
 			$user_query = "SELECT eventID FROM attending WHERE userID = '$_SESSION[userid]'";
 			$result = mysql_query($user_query);
 
-			$xml_text .= "<user><username>" . $_SESSION['user'] . "</username><userid>" . $_SESSION['userid'] . "</userid>";
+			$xml_text .= "<user><username>" . $_SESSION['user'] . "</username><userid>" . $_SESSION['userid'] . "</userid><authority>" . $_SESSION['authority'] . "</authority>";
 
 			if(mysql_num_rows($result) != 0) {
 				$xml_text .= "<attended>";
