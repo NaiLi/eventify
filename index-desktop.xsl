@@ -15,7 +15,7 @@
 
 		  <body>
 		  	<div id="header">
-		  		<h1>Eventify</h1>
+		  		<img src="bjarnebla.png" alt="Mountain View" style="height:150px; padding-left:10%;"/>
 		  		<xsl:if test="user">
 					<form id="logout" action="logout.php" method="POST">
 						<input type="submit" value="Logga ut"/>
