@@ -1,5 +1,6 @@
 <?php
 	
+	include "prefix.php";	
 	include "db_connect.php";
 
 	$action = $_GET['action'];
@@ -36,5 +37,6 @@
 	print utf8_encode($xml_text);
 
 	include "db_disconnect.php";
+	include "postfixEventForm.php";
 
 ?>

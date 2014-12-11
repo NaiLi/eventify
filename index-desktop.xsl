@@ -8,17 +8,6 @@
 		<html>
 			<head>
 				<link rel="stylesheet" href="style_desktop.css"/>
-				<script type="text/javascript">
-					function showform(){
-						if(document.getElementById("eventForm").style.display != "inline") {
-							document.getElementById("eventForm").style.display = "inline";
-							document.getElementById("showaddevent").innerHTML = "Dölj ↑";
-						} else {
-							document.getElementById("eventForm").style.display = "none";
-							document.getElementById("showaddevent").innerHTML = "Lägg till nytt event ↓";
-						}						
-					}
-				</script>
 				<title>
 					EVENTIFY
 				</title>
